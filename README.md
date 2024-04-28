@@ -10,7 +10,33 @@ We separate the problem into two parts:
 
 Follow the instructions in the [GitHub repository](https://github.com/openai/whisper) to install the tool. 
 
-An example of usage is `/Users/christophecerin/.local/pipx/venvs/openai-whisper/bin/whisper Trystram.mov --language French --model medium`
+On Mac, you need brew (the package manager), then install Python and ffmpeg from the command line:
+
+```
+# on MacOS using Homebrew (https://brew.sh/)
+brew install ffmpeg
+brew install python@3.12
+brew install pipx
+```
+
+Then use the pipx package manager to install whisper
+
+```
+pipx install openai-whisper
+```
+
+To use whisper from the command line: `/Users/christophecerin/.local/pipx/venvs/openai-whisper/bin/whisper Trystram.mov --language French --model medium`.
+
+And there, at the end of the transcription, you recover the .srt .vtt .txt files which you can reinject into the video, still with ffmpeg.
+
+The embedding of subtitles is a slightly more complex operation because the images of the video that contain subtitles are recomposed by embedding the subtitle in the image, which requires modifying all the pixels corresponding to the surface subtitles. An additional difficulty comes (at least for the proposed method) from the fact that it is necessary to use the .ass format instead of .srt for the subtitles, a format conversion is therefore necessary upstream. The manipulation was carried out with the following sequence of commands:
+
+```
+ffmpeg -i video1.srt video1.ass # produit le fichier de sous-titres au format ass
+ffmpeg -i video1.mp4 -filter_complex "subtitles=video1.ass:force_style='BackColour=&H70000000,BorderStyle=4,Outline=1,Shadow=0,MarginV=10'" video1+sstit2.mp4
+```
+
+Let's return to the example: `/Users/christophecerin/.local/pipx/venvs/openai-whisper/bin/whisper Trystram.mov --language French --model medium`
 
 First, this command analyses the video `Trystram.mov` to isolate the speech.
 
