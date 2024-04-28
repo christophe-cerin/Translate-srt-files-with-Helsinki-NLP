@@ -10,7 +10,7 @@ We separate the problem into two parts:
 
 Follow the instructions in the [GitHub repository](https://github.com/openai/whisper) to install the tool. 
 
-On Mac, you need brew (the package manager), then install `Python` and `ffmpeg` from the command line:
+On Mac, you need brew (the package manager), then install `Python`, `ffmpeg` and `pipx` from the command line:
 
 ```
 # on MacOS using Homebrew (https://brew.sh/)
