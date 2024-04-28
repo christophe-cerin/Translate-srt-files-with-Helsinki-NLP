@@ -1,14 +1,14 @@
 # How to manage subtitles
 
-The problem is that you want to add subtitles to a video. You want to generate subtitles for multiple languages.
+The problem is that you want to add subtitles to a video automatically. You want to generate subtitles for multiple languages.
 
 We separate the problem into two parts:
-1. We use openai-whisper to produce the subtitle from the original video automatically;
-2. We use Helsinki-NLP tools to translate the subtitle to a foreign language.
+1. We use openai-whisper to produce the subtitle from the original video automatically; We mean programmatically;
+2. We use Helsinki-NLP tools to automatically translate the subtitle to a foreign language. We mean programmatically.
 
 ## Openai-whisper
 
-Follow the instruction in the [GitHub repository](https://github.com/openai/whisper) to install it. 
+Follow the instructions in the [GitHub repository](https://github.com/openai/whisper) to install the tool. 
 
 An example of usage is `/Users/christophecerin/.local/pipx/venvs/openai-whisper/bin/whisper Trystram.mov --language French --model medium`
 
@@ -22,7 +22,7 @@ To convert `Trystram.srt` to another language, you can use [Google translate](ht
 
 But you can also use [Helsinki NLP]() work. An introductory [tutorial](https://www.scaleway.com/en/blog/ai-in-practice-generating-video-subtitles/) is available to give an idea of the tool. Please, consult the [GitHub repository](https://github.com/Helsinki-NLP/Opus-MT) too.
 
-We developed our tool, based on the Helsinki-NLP tool. Below, find some examples of usage.
+We developed our tool, based on the Helsinki-NLP tool. We've included some examples of usage below.
 
 ```
 $ python3 translate-Helsinki-NLP.py --language "fr-en" "Downloads/Trystram.srt"
