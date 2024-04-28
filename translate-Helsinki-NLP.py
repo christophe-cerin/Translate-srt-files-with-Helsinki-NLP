@@ -1007,6 +1007,7 @@ def main():
             print('The accepted acronyms are:')
             print(models)
             return
+            
     tokenizer = MarianTokenizer.from_pretrained(opus_mt_model_name)
     opus_mt_model = MarianMTModel.from_pretrained(opus_mt_model_name)
     # print(opus_mt_model_name)
@@ -1020,7 +1021,7 @@ def main():
     # "chunk" our input file, delimited by blank lines
     with open(files) as f:
         res = [list(g) for b,g in groupby(f, lambda x: bool(x.strip())) if b]
-        for segment in res[0:4]:
+        for segment in res:
             text = translate(segment[2])
             print(segment[0], end="")
             print(segment[1], end="")
