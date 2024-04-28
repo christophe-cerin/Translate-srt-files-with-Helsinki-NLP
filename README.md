@@ -1,16 +1,16 @@
-# How to manage subtitles
+# How to manage subtitles in a video?
 
 The problem is that you want to add subtitles to a video automatically. You want to generate subtitles for multiple languages.
 
 We separate the problem into two parts:
-1. We use openai-whisper to produce the subtitle from the original video automatically; We mean programmatically;
+1. We use openai-whisper to produce the subtitle from the original video automatically; We mean almost programmatically;
 2. We use Helsinki-NLP tools to automatically translate the subtitle to a foreign language. We mean programmatically.
 
 ## Openai-whisper
 
 Follow the instructions in the [GitHub repository](https://github.com/openai/whisper) to install the tool. 
 
-On Mac, you need brew (the package manager), then install Python and ffmpeg from the command line:
+On Mac, you need brew (the package manager), then install `Python` and `ffmpeg` from the command line:
 
 ```
 # on MacOS using Homebrew (https://brew.sh/)
@@ -19,7 +19,7 @@ brew install python@3.12
 brew install pipx
 ```
 
-Then use the pipx package manager to install whisper
+Then use the `pipx` package manager to install whisper
 
 ```
 pipx install openai-whisper
@@ -27,7 +27,7 @@ pipx install openai-whisper
 
 To use whisper from the command line: `/Users/christophecerin/.local/pipx/venvs/openai-whisper/bin/whisper Trystram.mov --language French --model medium`.
 
-And there, at the end of the transcription, you recover the .srt .vtt .txt files which you can reinject into the video, still with ffmpeg.
+And there, at the end of the transcription, you recover the .srt, .vtt, .txt files which you can reinject into the video, still with ffmpeg.
 
 The embedding of subtitles is a slightly more complex operation because the images of the video that contain subtitles are recomposed by embedding the subtitle in the image, which requires modifying all the pixels corresponding to the surface subtitles. An additional difficulty comes (at least for the proposed method) from the fact that it is necessary to use the .ass format instead of .srt for the subtitles, a format conversion is therefore necessary upstream. The manipulation was carried out with the following sequence of commands:
 
