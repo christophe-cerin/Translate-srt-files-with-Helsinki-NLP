@@ -52,7 +52,7 @@ To convert `Trystram.srt` to another language, you can use [Google translate](ht
 
 But you can also use [Helsinki NLP]() work. An introductory [tutorial](https://www.scaleway.com/en/blog/ai-in-practice-generating-video-subtitles/) is available to give an idea of the tool. Please, consult the [GitHub repository](https://github.com/Helsinki-NLP/Opus-MT) too.
 
-We developed our tool, based on the Helsinki-NLP tool. We've included some examples of usage below.
+We developed our tool, namely `translate-Helsinki-NLP.py`, based on the Helsinki-NLP tool. We've included some examples of usage below.
 
 ```
 $ python3 translate-Helsinki-NLP.py --language "fr-en" "Downloads/Trystram.srt"
