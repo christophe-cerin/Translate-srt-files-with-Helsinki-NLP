@@ -50,7 +50,7 @@ Second, this command produces different files, and among them, the subtitles, in
 
 To convert `Trystram.srt` to another language, you can use [Google translate](https://translate-subtitles.com/) from this interface `https://translate-subtitles.com/`.
 
-But you can also use [Helsinki NLP]() work. An introductory [tutorial](https://www.scaleway.com/en/blog/ai-in-practice-generating-video-subtitles/) is available to give an idea of the tool. Please, consult the [GitHub repository](https://github.com/Helsinki-NLP/Opus-MT) too.
+But you can also use [Helsinki NLP]() work. An introductory [tutorial](https://www.scaleway.com/en/blog/ai-in-practice-generating-video-subtitles/) is available to give an idea of the tool. Please, consult the [GitHub repository](https://github.com/Helsinki-NLP/Opus-MT), and this [one for the installation](https://huggingface.co/transformers/v3.5.1/model_doc/marian.html)
 
 We developed our tool, namely `translate-Helsinki-NLP.py`, based on the Helsinki-NLP tool. We've included some examples of usage below.
 
