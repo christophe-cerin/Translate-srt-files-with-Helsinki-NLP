@@ -29,9 +29,9 @@ To use whisper from the command line: `/Users/christophecerin/.local/pipx/venvs/
 
 And there, at the end of the transcription, you recover the .srt, .vtt, .txt files which you can reinject into the video, still with ffmpeg.
 
-We recommend improving the translation by editing your .srt file with [Jubler](https://www.jubler.org/) subtitle editor.
+We would recommend that you improve the translation by editing your .srt file with [Jubler](https://www.jubler.org/) subtitle editor.
 
-The embedding of subtitles is a slightly more complex operation because the images of the video that contain subtitles are recomposed by embedding the subtitle in the image, which requires modifying all the pixels corresponding to the surface subtitles. An additional difficulty comes (at least for the proposed method) from the fact that it is necessary to use the .ass format instead of .srt for the subtitles, a format conversion is therefore necessary upstream. The manipulation was carried out with the following sequence of commands:
+The embedding of subtitles is a slightly more complex operation because the images of the video that contain subtitles are recomposed by embedding the subtitle in the image, which requires modifying all the pixels corresponding to the surface subtitles. An additional difficulty comes (at least for the proposed method) from the fact that it is necessary to use the .ass format instead of .srt for the subtitles, a format conversion is therefore required upstream. The manipulation was carried out with the following sequence of commands:
 
 ```
 ffmpeg -i video1.srt video1.ass # produit le fichier de sous-titres au format ass
@@ -62,10 +62,12 @@ ffmpeg -y -loglevel "repeat+info" \
 -metadata:s:s:8 language=ara -metadata:s:s:9 language=zho \
 session2.mkv  
 ```
+Note: `ffmpeg` expects [ISO 639-2](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes) codes for languages.
 
-Note: the output file format is `mkv` because our `ffmpeg` binary has no other possibilities. Check the version an options with `ffmpeg --version`. 
 
-Note: if your video player is [VLC](https://www.videolan.org/vlc/), put your video and all the subtitles files in the same directory. In this way, go to the `subtitle` tab from the main menu, and select your subtitle. You can change the subtitle when playing the video.
+Note: the output file format is `mkv` because our `ffmpeg` binary has no other possibilities. Check the version and options with `ffmpeg --version`. 
+
+Note: if your video player is [VLC](https://www.videolan.org/vlc/), put your video and all the subtitles files in the same directory. Go to the `subtitle` tab from the main menu, and select your subtitle. You can change the subtitle when playing the video.
 
 Let's return to the example: `/Users/christophecerin/.local/pipx/venvs/openai-whisper/bin/whisper Trystram.mov --language French --model medium`
 
@@ -75,7 +77,7 @@ Second, this command produces different files, and among them, the subtitles, in
 
 ## Translate subtitles to another language
 
-To convert `Trystram.srt` to another language, you can use [Google translate](https://translate-subtitles.com/) from this interface `https://translate-subtitles.com/`.
+To convert `Trystram.srt` to another language, you can use [Google translate subtitles](https://translate-subtitles.com/) service from this interface `https://translate-subtitles.com/`.
 
 But you can also use [Helsinki NLP]() work. An introductory [tutorial](https://www.scaleway.com/en/blog/ai-in-practice-generating-video-subtitles/) is available to give an idea of the tool. Please, consult the [GitHub repository](https://github.com/Helsinki-NLP/Opus-MT), and this [one for the installation](https://huggingface.co/transformers/v3.5.1/model_doc/marian.html)
 
