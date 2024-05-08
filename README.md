@@ -38,6 +38,33 @@ ffmpeg -i video1.srt video1.ass # produit le fichier de sous-titres au format as
 ffmpeg -i video1.mp4 -filter_complex "subtitles=video1.ass:force_style='BackColour=&H70000000,BorderStyle=4,Outline=1,Shadow=0,MarginV=10'" video1+sstit2.mp4
 ```
 
+Another possibility is to bypass ass files as follows. In this example, we consider 10 subtitle files, for a `mov` input format and a `mkv` output file format:
+
+```
+ffmpeg -y -loglevel "repeat+info" \
+-i table_ronde_1.mov \
+-i table_ronde_1.srt \
+-i table_ronde_1.en.srt \
+-i table_ronde_1.es.srt \
+-i table_ronde_1.pt.srt \
+-i table_ronde_1.it.srt \
+-i table_ronde_1.de.srt \
+-i table_ronde_1.pl.srt \
+-i table_ronde_1.ja.srt \
+-i table_ronde_1.ar.srt \
+-i table_ronde_1.zh-CN.srt \
+-map 0:v -map 0:a -map 1 -map 2 -map 3 -map 4 -map 5 -map 6 -map 7 -map 8 -map 9 -map 10  \
+-c:v copy -c:a copy -c:s srt \
+-metadata:s:s:0 language=fr -metadata:s:s:1 language=eng \
+-metadata:s:s:2 language=es -metadata:s:s:3 language=pt \
+-metadata:s:s:4 language=it -metadata:s:s:5 language=de \
+-metadata:s:s:6 language=pl -metadata:s:s:7 language=jpn \
+-metadata:s:s:8 language=ara -metadata:s:s:9 language=zho \
+session2.mkv  
+```
+
+Note: the output file format is `mkv` because our `ffmpeg` binary has no other possibilities. Check the version an options with `ffmpeg --version`. 
+
 Note: if your video player is [VLC](https://www.videolan.org/vlc/), put your video and all the subtitles files in the same directory. In this way, go to the `subtitle` tab from the main menu, and select your subtitle. You can change the subtitle when playing the video.
 
 Let's return to the example: `/Users/christophecerin/.local/pipx/venvs/openai-whisper/bin/whisper Trystram.mov --language French --model medium`
